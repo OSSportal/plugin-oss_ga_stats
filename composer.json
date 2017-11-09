@@ -1,0 +1,42 @@
+{
+  "name": "xpressengine-plugin/oss_ga_stats",
+  "description": "This Package is Xpressengine Plugin - OSS google analytics 통계표.",
+  "keywords": [
+    "xpressengine",
+    "plugin"
+  ],
+  "license": "LGPL-2.1",
+  "version": "1.0.0",
+  "type": "xpressengine-plugin",
+  "support": {
+    "email": "input@your.email"
+  },
+  "authors": [
+    {
+      "name": "input your name",
+      "email": "input@your.email",
+      "homepage": "http://input.your.site",
+      "role": "Developer"
+    }
+  ],
+  "extra": {
+    "xpressengine": {
+      "title": "OSS google analytics 통계표",
+      "component": {
+        "oss_ga_stats/skin/oss_ga_stats@default": {
+          "class": "Xpressengine\\Plugins\\OSSGAStats\\StatsSkin",
+          "name": "OSS GA 통계스킨",
+          "description": "OSS GA 통계페이지 스킨입니다."
+        }
+      }
+    }
+  },
+  "require": {
+    "phpoffice/phpexcel": "^1.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "Xpressengine\\Plugins\\OSSGAStats\\": "src/"
+    }
+  }
+}
