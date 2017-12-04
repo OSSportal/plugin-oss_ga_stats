@@ -226,7 +226,7 @@ class DownloadController extends Controller
             $cellId = $track . 1;
             $sheet->setCellValue($cellId, $column->name());
 
-            $track = chr(ord($track) + 1);
+            $track = $this->nextTrack($track);
         }
 
         // set data rows
@@ -239,7 +239,7 @@ class DownloadController extends Controller
                 $cellId = $track . $session;
                 $sheet->setCellValue($cellId, $row->getCol($column)->value());
 
-                $track = chr(ord($track) + 1);
+                $track = $this->nextTrack($track);
             }
 
             $track = $beginTrack;
@@ -255,5 +255,29 @@ class DownloadController extends Controller
         $response->deleteFileAfterSend(true);
 
         return $response;
+    }
+
+
+    protected function nextTrack($current)
+    {
+        $begin = 'A';
+        $end = 'Z';
+
+        if (!$current) {
+            return $begin;
+        }
+
+        $segments = str_split($current);
+        $code = array_pop($segments);
+        $header = implode('', $segments);
+
+        if ($code === $end) {
+            $header = $this->nextTrack($header);
+            return $header.$begin;
+        }
+
+        $code = chr(ord($code) + 1);
+
+        return $header.$code;
     }
 }
