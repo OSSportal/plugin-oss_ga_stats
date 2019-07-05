@@ -1,5 +1,5 @@
 {{ XeFrontend::css('assets/vendor/jqueryui/jquery-ui.min.css')->load() }}
-{{ XeFrontend::js('assets/vendor/jqueryui/jquery-ui.min.js')->appendTo('head')->load() }}
+{{ XeFrontend::js('assets/vendor/jqueryui/jquery-ui.min.js')->load() }}
 
 @include('oss_ga_stats::views.platform._header', ['page' => 'os'])
 
